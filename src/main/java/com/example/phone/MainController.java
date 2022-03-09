@@ -1,7 +1,5 @@
-package com.example.phone.controller;
+package com.example.phone;
 
-import com.example.phone.ListeningWav;
-import com.example.phone.SoundRecorder;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

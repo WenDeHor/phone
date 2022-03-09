@@ -24,7 +24,7 @@ import sun.audio.AudioStream;
 
 @Component
 public class ListeningWav {
-    static String URL = "C:\\FATHER\\phone\\src\\main\\resources\\RecordAudio.wav";
+    static String URL = "src\\main\\resources\\RecordAudio.wav";
 
     public void startListening()  {
         new JFXPanel();

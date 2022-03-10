@@ -18,7 +18,7 @@ public class MainController {
     }
 
     @GetMapping("/call")
-    public String call2() {
+    public void call2() {
         for (int i = 0; i < 100; i++) {
             AudioFormat format = new AudioFormat(8000.0f, 8, 2, true, true);
 
@@ -55,14 +55,14 @@ public class MainController {
                 e.printStackTrace();
             }
         }
-        return "redirect:/";
+//        return "redirect:/";
     }
 
     @GetMapping("/stop")
-    public String showUserPagePhoto() {
+    public void showUserPagePhoto() {
         speakers.close();
         microphone.close();
-        return "redirect:/";
+//        return "redirect:/";
     }
 }
 

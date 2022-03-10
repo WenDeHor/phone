@@ -20,21 +20,17 @@ public class MainController {
     @GetMapping("/call")
     public void call2() {
         for (int i = 0; i < 100; i++) {
-            AudioFormat format = new AudioFormat(8000.0f, 8, 2, true, true);
-
+            AudioFormat format = new AudioFormat(8000.0f, 16, 1, true, true);
             try {
                 microphone = AudioSystem.getTargetDataLine(format);
-
                 DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
                 microphone = (TargetDataLine) AudioSystem.getLine(info);
                 microphone.open(format);
-
                 ByteArrayOutputStream out = new ByteArrayOutputStream();
                 int numBytesRead;
                 int CHUNK_SIZE = 1024;
                 byte[] data = new byte[microphone.getBufferSize() / 5];
                 microphone.start();
-
                 int bytesRead = 0;
                 DataLine.Info dataLineInfo = new DataLine.Info(SourceDataLine.class, format);
                 speakers = (SourceDataLine) AudioSystem.getLine(dataLineInfo);
@@ -48,21 +44,21 @@ public class MainController {
                     // write mic data to stream for immediate playback
                     speakers.write(data, 0, numBytesRead);
                 }
-                speakers.drain();
-                speakers.close();
-                microphone.close();
-            } catch (Exception e) {
+            } catch (LineUnavailableException e) {
                 e.printStackTrace();
             }
+            speakers.drain();
+            speakers.close();
+            microphone.close();
         }
 //        return "redirect:/";
     }
 
     @GetMapping("/stop")
-    public void showUserPagePhoto() {
+    public String showUserPagePhoto() {
         speakers.close();
         microphone.close();
-//        return "redirect:/";
+        return "redirect:/";
     }
 }
 

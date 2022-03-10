@@ -45,12 +45,6 @@ public class SoundRecorder {
         }
     }
 
-    void finish() {
-        line.stop();
-        line.close();
-        System.out.println("Finished");
-    }
-
     public void startRecord() {
         final SoundRecorder recorder = new SoundRecorder();
         Thread stopper = new Thread(new Runnable() {
@@ -61,11 +55,17 @@ public class SoundRecorder {
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
-                recorder.finish();
+                recorder.finish2();
 
             }
         });
         stopper.start();
         recorder.start();
+    }
+
+    public void finish2() {
+        line.stop();
+        line.close();
+        System.out.println("Finished");
     }
 }

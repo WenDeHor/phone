@@ -33,7 +33,7 @@ public class MainController {
     @GetMapping("/call")
     public String call2() {
 
-        AudioFormat format = new AudioFormat(8000.0f, 16, 1, true, true);
+        AudioFormat format = new AudioFormat(8000.0f, 16, 2, true, true);
 //        TargetDataLine microphone;
         AudioInputStream audioInputStream;
 //        SourceDataLine speakers;
